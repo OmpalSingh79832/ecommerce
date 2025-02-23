@@ -78,6 +78,7 @@ const getPopularProducts = async (req, res) => {
       return res.status(500).json({ message: error.message });
   }
 };
+
 const getTopProducts = async (req, res) => {
   try {
       const topCategory = "topproducts";

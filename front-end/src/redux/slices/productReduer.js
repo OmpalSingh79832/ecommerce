@@ -30,6 +30,7 @@ export const getPopularProducts = createAsyncThunk(
     }
   }
 );
+
 export const getTopProducts = createAsyncThunk(
   "products/getTopProducts",
   async (_, { rejectWithValue }) => {

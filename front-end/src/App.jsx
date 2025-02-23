@@ -18,7 +18,7 @@ function App() {
   return (
     <>
       <>
-   
+
         <Header />
         <Routes>
           <Route path="/" element={<HomePage />} />
@@ -28,8 +28,7 @@ function App() {
           <Route path="/blog" element={<Blog />} />
           <Route path="/catalogue" element={<HomeProduct />} />
           <Route path="/product-details/:productId" element={<ProductPage />} />
-
-          <Route path="/dashboardn" element={<Index />} />
+          <Route path="/dashboard" element={<Index />} />
         </Routes>
         <Footer />
       </>

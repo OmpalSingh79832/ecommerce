@@ -40,72 +40,71 @@ const Header = () => {
         </div>
         <div className="w-[90%] mx-auto py-2">
           <div className="sm:hidden md:hidden lg:block">
-          <div className="flex flex-col lg:flex-row justify-between items-center text-center gap-4 ">
-            {/* Logo Section */}
-            <div className="w-[60%] lg:w-[15%] flex justify-center">
-              <Link to={"/"}><img src={Logo} alt="logo" className="w-full rounded-md" /></Link>
-            </div>
+            <div className="flex flex-col lg:flex-row justify-between items-center text-center gap-4 ">
+              {/* Logo Section */}
+              <div className="w-[60%] lg:w-[15%] flex justify-center">
+                <Link to={"/"}><img src={Logo} alt="logo" className="w-full rounded-md" /></Link>
+              </div>
 
-            {/* Phone Number Section */}
-            <div className="flex items-center gap-2 text-xl middle-menu-phone">
-              <FaPhone className="text-2xl" />
-              <p>+91 9266-116358</p>
-            </div>
+              {/* Phone Number Section */}
+              <div className="flex items-center gap-2 text-xl middle-menu-phone">
+                <FaPhone className="text-2xl" />
+                <p>+91 9266-116358</p>
+              </div>
 
-            {/* Social Icons Section */}
-            <div className="middle-menu-icon">
-              <ul className="flex justify-center gap-4">
-                <li><FaLinkedinIn className="text-xl" /></li>
-                <li><FaFacebookF className="text-xl" /></li>
-                <li><SiInstagram className="text-xl" /></li>
-                <li><IoLogoYoutube className="text-xl" /></li>
-              </ul>
+              {/* Social Icons Section */}
+              <div className="middle-menu-icon">
+                <ul className="flex justify-center gap-4">
+                  <li><FaLinkedinIn className="text-xl" /></li>
+                  <li><FaFacebookF className="text-xl" /></li>
+                  <li><SiInstagram className="text-xl" /></li>
+                  <li><Link to={"/dashboard"}><IoLogoYoutube className="text-xl" /></Link></li>
+                </ul>
+              </div>
             </div>
           </div>
+        </div>
+        <div className="last-menu-main bg-[#01132D]">
+          {/* Toggle Button for Mobile */}
+          <div className="lg:hidden flex justify-between p-4">
+            <div className="sm:block md:block lg:hidden">
+              <img src={Logo} alt="" className="w-[25%] rounded-sm" />
+            </div>
+            <button
+              className="text-white text-3xl border-2 border-white p-1 h-fit "
+              onClick={toggleMenu}
+            >
+              {isMenuOpen ? <IoClose /> : <IoMenu />}
+            </button>
+          </div>
+
+          {/* Menu */}
+          <div
+            className={`down-menu ${isMenuOpen ? "block" : "hidden"
+              } lg:block transition-all duration-500`}
+          >
+            <ul className="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-10 text-center list-none">
+              <li className="text-white uppercase text-lg py-2 relative cursor-pointer " onClick={handleMenuItemClick}>
+                <Link to={"/"}>Home</Link>
+              </li>
+              <li className="text-white uppercase text-lg py-2 relative cursor-pointer " onClick={handleMenuItemClick}>
+                <Link to={"/about-us"}>About Us</Link>
+              </li>
+              <li className="text-white uppercase text-lg py-2 relative cursor-pointer " onClick={handleMenuItemClick}>
+                <Link to={"/catalogue"}>Catalogue</Link>
+              </li>
+              <li className="text-white uppercase text-lg py-2 relative cursor-pointer" onClick={handleMenuItemClick}>
+                <Link to={"/our-partner"}>Our Partners</Link>
+              </li>
+              <li className="text-white uppercase text-lg py-2 relative cursor-pointer" onClick={handleMenuItemClick}>
+                <Link to={"/blog"}>Blog</Link>
+              </li>
+              <li className="text-white uppercase text-lg py-2 relative cursor-pointer" onClick={handleMenuItemClick}>
+                <Link to={"/contact-us"}>Contact Us</Link>
+              </li>
+            </ul>
           </div>
         </div>
-          <div className="last-menu-main bg-[#01132D]">
-      {/* Toggle Button for Mobile */}
-      <div className="lg:hidden flex justify-between p-4">
-        <div className="sm:block md:block lg:hidden">
-        <img src={Logo} alt="" className="w-[25%] rounded-sm" />
-        </div>
-        <button
-          className="text-white text-3xl border-2 border-white p-1 h-fit "
-          onClick={toggleMenu}
-        >
-          {isMenuOpen ? <IoClose /> : <IoMenu />}
-        </button>
-      </div>
-
-      {/* Menu */}
-      <div
-        className={`down-menu ${
-          isMenuOpen ? "block" : "hidden"
-        } lg:block transition-all duration-500`}
-      >
-        <ul className="flex flex-col lg:flex-row justify-center items-center gap-4 lg:gap-10 text-center list-none">
-          <li className="text-white uppercase text-lg py-2 relative cursor-pointer " onClick={handleMenuItemClick}>
-           <Link to={"/"}>Home</Link>
-          </li>
-          <li className="text-white uppercase text-lg py-2 relative cursor-pointer " onClick={handleMenuItemClick}>
-           <Link to={"/about-us"}>About Us</Link>
-          </li>
-          <li className="text-white uppercase text-lg py-2 relative cursor-pointer " onClick={handleMenuItemClick}>
-           <Link to={"/catalogue"}>Catalogue</Link>
-          </li>
-          <li className="text-white uppercase text-lg py-2 relative cursor-pointer" onClick={handleMenuItemClick}>
-           <Link to={"/our-partner"}>Our Partners</Link>
-          </li>
-          <li className="text-white uppercase text-lg py-2 relative cursor-pointer" onClick={handleMenuItemClick}>
-           <Link to={"/blog"}>Blog</Link> 
-          </li>
-          <li className="text-white uppercase text-lg py-2 relative cursor-pointer" onClick={handleMenuItemClick}>
-          <Link to={"/contact-us"}>Contact Us</Link>  
-          </li>
-        </ul>
-      </div>
-    </div>
       </nav>
     </>
   )

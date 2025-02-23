@@ -4,10 +4,11 @@ import { products } from "./data";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../redux/slices/productReduer";
+import TopProducts from "../../pages/homepage/TopProducts";
 
 const ProductPage = () => {
   const { singleproduct } = useSelector((state) => state.product)
-  const params  = useParams();
+  const params = useParams();
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState(null);
   const [thumbnails, setThumbnails] = useState([]);
@@ -22,11 +23,11 @@ const ProductPage = () => {
   const id = params.productId
 
 
-  useEffect(()=> {
+  useEffect(() => {
     dispatch(getProductById(id))
   }, [dispatch])
 
-  const oneproduct =  singleproduct.menu ;
+  const oneproduct = singleproduct.menu;
 
   console.log(oneproduct, 'd is here')
   useEffect(() => {
@@ -182,7 +183,7 @@ const ProductPage = () => {
                 </table>
 
                 {/* More Details Link */}
-                <Link to={"/"}  className="text-blue-500 text-lg font-medium hover:text-blue-700 transition-all">
+                <Link to={"/"} className="text-blue-500 text-lg font-medium hover:text-blue-700 transition-all">
                   Click to view more Details
                 </Link>
 
@@ -220,64 +221,65 @@ const ProductPage = () => {
       </div>
 
       <div className="w-full bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-4" >
-  <div className="w-full max-w-7xl mx-auto bg-white shadow-xl rounded-xl p-8 border border-gray-200">
-    
-    {/* Header Section */}
-    <h2 className="text-4xl font-bold text-blue-900 text-center mb-6">
-      Product Details
-    </h2>
+        <div className="w-full max-w-7xl mx-auto bg-white shadow-xl rounded-xl p-8 border border-gray-200">
 
-    {/* Product Information Table */}
-    <div className="overflow-hidden rounded-lg border border-blue-300 shadow-md">
-      <table className="w-full text-lg border-collapse">
-        <tbody>
-          <tr className="border-b border-blue-200 bg-gray-50">
-            <td className="px-6 py-3 font-medium text-gray-800">Application</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.application}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-gray-50">
-            <td className="px-6 py-3 font-medium text-gray-800">Color</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.colors}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-gray-50">
-            <td className="px-6 py-3 font-medium text-gray-800">Gender</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.gender}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-white">
-            <td className="px-6 py-3 font-medium text-gray-800">Season</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.season}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-gray-50">
-            <td className="px-6 py-3 font-medium text-gray-800">Features</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.feature}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-gray-50">
-            <td className="px-6 py-3 font-medium text-gray-800">Pattern</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.pattern}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-white">
-            <td className="px-6 py-3 font-medium text-gray-800">Occasion</td>
-            <td className="px-6 py-3 text-gray-700">{oneproduct.occasion}</td>
-          </tr>
-          <tr className="border-b border-blue-200 bg-white">
-            <td className="px-6 py-3 font-medium text-gray-800">Country of Origin</td>
-            <td className="px-6 py-3 text-gray-700">India</td>
-          </tr>
-        </tbody>
-      </table>
-    </div>
+          {/* Header Section */}
+          <h2 className="text-4xl font-bold text-blue-900 text-center mb-6">
+            Product Details
+          </h2>
 
-   
+          {/* Product Information Table */}
+          <div className="overflow-hidden rounded-lg border border-blue-300 shadow-md">
+            <table className="w-full text-lg border-collapse">
+              <tbody>
+                <tr className="border-b border-blue-200 bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-800">Application</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.application}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-800">Color</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.colors}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-800">Gender</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.gender}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-white">
+                  <td className="px-6 py-3 font-medium text-gray-800">Season</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.season}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-800">Features</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.feature}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-gray-50">
+                  <td className="px-6 py-3 font-medium text-gray-800">Pattern</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.pattern}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-white">
+                  <td className="px-6 py-3 font-medium text-gray-800">Occasion</td>
+                  <td className="px-6 py-3 text-gray-700">{oneproduct.occasion}</td>
+                </tr>
+                <tr className="border-b border-blue-200 bg-white">
+                  <td className="px-6 py-3 font-medium text-gray-800">Country of Origin</td>
+                  <td className="px-6 py-3 text-gray-700">India</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
 
-    {/* Call-to-Action Button */}
-    <div className="mt-4 flex justify-center">
-      <button className="bg-[#1E2747] text-white text-lg  px-8 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#2571B9]">
-        Yes! I am Interested
-      </button>
-    </div>
-  </div>
-</div>
 
+
+          {/* Call-to-Action Button */}
+          <div className="mt-4 flex justify-center">
+            <button className="bg-[#1E2747] text-white text-lg  px-8 py-3 rounded-lg shadow-lg transition-all duration-300 hover:scale-105 hover:bg-[#2571B9]">
+              Yes! I am Interested
+            </button>
+          </div>
+        </div>
+      </div>
+
+      <TopProducts />
 
     </>
   );
