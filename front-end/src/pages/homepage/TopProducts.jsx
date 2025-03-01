@@ -5,15 +5,12 @@ import { getPopularProducts, getTopProducts } from '../../redux/slices/productRe
 import Slider from "react-slick";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 
-
 const TopProducts = () => {
-
     const { topproducts, popuarproducts } = useSelector((state) => state.product)
     const dispatch = useDispatch();
 
     useEffect(() => {
         dispatch(getTopProducts())
-        dispatch(getPopularProducts())
     }, [dispatch]);
 
     const popular = Array.isArray(popuarproducts) ? popuarproducts : popuarproducts.products || [];
@@ -45,13 +42,13 @@ const TopProducts = () => {
         ],
     };
 
-
     return (
         <>
             {/* Our Top Products */}
-            < div className='text-center py-6' >
+            <div className='text-center py-6'>
                 <div className="w-fit mx-auto">
-                    <h1 className="text-3xl text-center text-gray-900">Our <span className="text-[#27497b] font-bold">Popular Products</span>
+                    <h1 className="text-3xl text-center text-gray-900">
+                        Our <span className="text-[#27497b] font-bold">Popular Products</span>
                     </h1>
                     <div className="border-b-2 border-black w-[80%] mx-auto mt-4"></div>
                 </div>
@@ -76,23 +73,24 @@ const TopProducts = () => {
 
                 <div className="mx-auto sm:py-10">
                     <Slider ref={sliderRef} {...sliderSettings}>
-
-                        {popular.slice(0, 8).map((item, index) => (
-                            <Link to={`/product-details/${product._id}`} key={index} className="group px-2">
-                                <img src={item?.images[0]} alt="Tall" className="aspect-square w-full rounded-lg bg-gray-200 group-hover:opacity-75 xl:aspect-[7/8]" />
+                        {popular.slice(0, 8).map((item) => (
+                            <Link key={item._id} to={`/product-details/${item._id}`} className="group px-2">
+                                <img
+                                    src={item?.images[0]}
+                                    alt={item.name}
+                                    className="aspect-square w-full rounded-lg bg-gray-200 group-hover:opacity-75 xl:aspect-[7/8]"
+                                />
                                 <h3 className="mt-4 text-lg font-bold">{item.name}</h3>
-                                <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-full  hover:bg-blue-700 transition">
-                                    Get  More →
+                                <button className="mt-2 bg-blue-600 text-white px-4 py-2 rounded-full hover:bg-blue-700 transition">
+                                    Get More →
                                 </button>
                             </Link>
-
                         ))}
-
                     </Slider>
                 </div>
-            </div >
+            </div>
         </>
     )
 }
 
-export default TopProducts
+export default TopProducts;

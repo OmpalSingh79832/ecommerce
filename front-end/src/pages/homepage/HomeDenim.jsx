@@ -108,7 +108,7 @@ const HomeDenim = () => {
           <Slider ref={sliderRef} {...sliderSettings}>
             {top.slice(0, 8).map((item, index) => (
               <div key={index} className="px-2">
-                <Link to={"/"} className="group">
+                <Link to={`/product-details/${item._id}`} className="group">
                   <img
                     src={item?.images[0]}
                     alt="Product"
@@ -173,7 +173,7 @@ const HomeDenim = () => {
             </div>
           </div>
         </div>
-      </div >
+      </div>
 
       {/* What We Do  */}
       < div className="py-10" >
