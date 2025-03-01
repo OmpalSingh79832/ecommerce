@@ -97,10 +97,6 @@ export default function UploadProduct() {
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // if (!formData.images.length || !formData.hoverimage) {
-    //   toast.error("Please upload all required images.");
-    //   return;
-    // }
     dispatch(addProduct(formData));
 
 
@@ -129,10 +125,11 @@ export default function UploadProduct() {
             <label className="text-base font-medium text-gray-700">Select Category</label>
             <select name="category" value={formData.category} onChange={handleChange} required className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-300">
               <option value="">Select Category</option>
-              <option value="funkyJeans">Funky Jeans</option>
-              <option value="shortsJeans">Shorts Jeans</option>
-              <option value="trousersChinos">Trousers & Chinos</option>
-              <option value="trackPants">Track Pants & Joggers</option>
+              <option value="Funky Jeans">Funky Jeans</option>
+              <option value="Shorts Jeans">Shorts Jeans</option>
+              <option value="Trousers & Chinos">Trousers & Chinos</option>
+              <option value="Track Pants & Joggers">Track Pants & Joggers</option>
+
             </select>
           </div>
 
@@ -158,7 +155,7 @@ export default function UploadProduct() {
               <select name={name} value={formData[name]} onChange={handleChange} required className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-300">
                 <option value="">Select {label}</option>
                 {options.map((option, idx) => (
-                  <option key={idx} value={option.toLowerCase().replace(/ /g, "")}>{option}</option>
+                  <option key={idx} value={option}>{option}</option>
                 ))}
               </select>
             </div>
@@ -167,7 +164,7 @@ export default function UploadProduct() {
           {/* Text Inputs */}
           {["colors", "pattern", "occasion"].map((field) => (
             <div key={field} className="flex flex-col">
-              <label className="text-base font-medium text-gray-700">{field.charAt(0).toUpperCase() + field.slice(1)}</label>
+              <label className="text-base font-medium text-gray-700">{field}</label>
               <input type="text" name={field} value={formData[field]} onChange={handleChange} placeholder={`Enter ${field}`} required className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" />
             </div>
           ))}
