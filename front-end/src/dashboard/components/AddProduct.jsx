@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { toast, ToastContainer } from 'react-toastify';
 import "react-toastify/dist/ReactToastify.css";
-import { addProduct } from '../../redux/slices/productReduer';
+import { addProduct, getProducts } from '../../redux/slices/productReduer';
 
 export default function UploadProduct() {
 

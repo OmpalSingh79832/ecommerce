@@ -54,7 +54,8 @@ const addProduct = async(req, res)=>{
 
   const getProducts = async(req, res) => {
     try {
-      const menu = await productModal.find().sort({ createdAt: -1 });
+      const recentCategory = "Recently Product";
+      const menu = await productModal.find({ uploadCategory: recentCategory });
       return res
         .status(200)
         .json({ message: "Product fetched successfully", menu });
@@ -64,7 +65,7 @@ const addProduct = async(req, res)=>{
 }
 const getPopularProducts = async (req, res) => {
   try {
-      const popularCategory = "popularproduct";
+      const popularCategory = "Popular Product";
       const popularProducts = await productModal.find({ uploadCategory: popularCategory });
       if (popularProducts.length === 0) {
           return res.status(404).json({ message: "No popular products found" });
@@ -81,7 +82,7 @@ const getPopularProducts = async (req, res) => {
 
 const getTopProducts = async (req, res) => {
   try {
-      const topCategory = "topproducts";
+      const topCategory = "Top Products";
       const topProducts = await productModal.find({ uploadCategory: topCategory });
       if (topProducts.length === 0) {
           return res.status(404).json({ message: "No top products found" });

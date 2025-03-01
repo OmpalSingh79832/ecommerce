@@ -17,13 +17,13 @@ const Filters = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
 
-  const categories = useMemo(() => {
-    return Array.from(new Set(productsFromApi.map((product) => product.category)));
-  }, [productsFromApi]);
+  // const categories = useMemo(() => {
+  //   return Array.from(new Set(productsFromApi.map((product) => product.category)));
+  // }, [productsFromApi]);
 
-  const colors = useMemo(() => {
-    return Array.from(new Set(productsFromApi.map((product) => product.colors)));
-  }, [productsFromApi]);
+  // const colors = useMemo(() => {
+  //   return Array.from(new Set(productsFromApi.map((product) => product.colors)));
+  // }, [productsFromApi]);
 
   const toggleSelection = (setSelected, value, selectedArray) => {
     setSelected(
@@ -64,7 +64,7 @@ const Filters = () => {
             Select Category
           </h2>
           {/* Category Filter */}
-          <div className="border p-3 mb-2 cursor-pointer">
+          {/* <div className="border p-3 mb-2 cursor-pointer">
             <div
               className="flex justify-between items-center"
               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
@@ -88,7 +88,7 @@ const Filters = () => {
                 ))}
               </div>
             )}
-          </div>
+          </div> */}
           {/* Colors Filter */}
           <div className="border p-3 mb-2 cursor-pointer">
             <div
@@ -98,13 +98,13 @@ const Filters = () => {
               <span>Colors</span>
               {isColorOpen ? <FaMinus /> : <FaPlus />}
             </div>
-            {isColorOpen && (
+            {/* {isColorOpen && (
               <div className="mt-2 gap-2">
                 {colors.map((color) => (
                   <label key={color} className="flex items-center gap-2">
                     <div
                       className="w-5 h-5 rounded-full border"
-                      style={{ backgroundColor: color.toLowerCase() }}
+                      style={{ backgroundColor: color }}
                     ></div>
                     <input
                       type="checkbox"
@@ -117,7 +117,7 @@ const Filters = () => {
                   </label>
                 ))}
               </div>
-            )}
+            )} */}
           </div>
         </div>
       </div>
@@ -140,15 +140,15 @@ const Filters = () => {
                       {/* Default Image */}
                       <img
                         loading="lazy"
-                        src={product.images[2]}
-                        alt={product.name}
+                        src={product?.images[2] ||  "https://i.ibb.co/VYTkS5Jn/png-black-logo.png"}
+                        alt={product?.name}
                         className="w-full object-cover object-top aspect-[59/70] transition-opacity duration-500 ease-in-out opacity-100 group-hover:opacity-0"
                       />
                       {/* Hover Image */}
                       <img
                         loading="lazy"
-                        src={product.hoverimage}
-                        alt={product.name}
+                        src={product?.hoverimage}
+                        alt={product?.name}
                         className="absolute top-0 left-0 w-full object-cover object-top aspect-[59/70] transition-opacity duration-500 ease-in-out opacity-0 group-hover:opacity-100"
                       />
                     </div>
@@ -156,7 +156,7 @@ const Filters = () => {
                   {/* Product Name & Button */}
                   <div className="sm:bg-white md:bg-[#efe7e2] py-2">
                     <span className="text-gray-900 sm:text-sm md:text-base font-semibold">
-                      {product.name}
+                      {product?.name}
                     </span>
                     <br />
                     <button className="bg-blue-500 text-white px-4 w-[80%] mx-auto py-2 text-sm font-medium rounded-lg hover:bg-blue-600 transition-all duration-300">

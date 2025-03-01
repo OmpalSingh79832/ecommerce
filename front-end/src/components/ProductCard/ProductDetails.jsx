@@ -7,7 +7,7 @@ import { getProductById } from "../../redux/slices/productReduer";
 import TopProducts from "../../pages/homepage/TopProducts";
 
 const ProductPage = () => {
-  const { singleproduct } = useSelector((state) => state.product)
+  const { singleproduct } = useSelector((state) => state.product);
   const params = useParams();
   const [product, setProduct] = useState(null);
   const [mainImage, setMainImage] = useState(null);
@@ -20,16 +20,19 @@ const ProductPage = () => {
   const visibleThumbnails = 6;
   const dispatch = useDispatch();
 
-  const id = params.productId
-
+  const id = params.productId;
+  
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, []); 
 
   useEffect(() => {
-    dispatch(getProductById(id))
-  }, [dispatch])
+    dispatch(getProductById(id));
+  }, [dispatch, id]);
 
   const oneproduct = singleproduct.menu;
 
-  console.log(oneproduct, 'd is here')
+  console.log(oneproduct, "d is here");
   useEffect(() => {
     setIsLoading(true);
     setError(null);
@@ -38,7 +41,7 @@ const ProductPage = () => {
       // Set product images from API data
       const productImages = oneproduct.images || [];
       setMainImage(productImages[0]); // Use first image as main
-      setThumbnails(productImages);    // All images as thumbnails
+      setThumbnails(productImages); // All images as thumbnails
     } else {
       setError("Product not found.");
     }
@@ -75,6 +78,7 @@ const ProductPage = () => {
   if (!oneproduct) {
     return <div>Product data not available.</div>;
   }
+
 
   return (
     <>
@@ -136,8 +140,12 @@ const ProductPage = () => {
             {/* Product Details */}
             <div className="w-full md:w-[60%] px-6">
               <div className="p-6 bg-white">
-                <h2 className="text-3xl font-semibold text-gray-900 mb-3">{oneproduct.name}</h2>
-                <p className="text-gray-700 text-lg">{oneproduct.moq} Piece (MOQ)</p>
+                <h2 className="text-3xl font-semibold text-gray-900 mb-3">
+                  {oneproduct.name}
+                </h2>
+                <p className="text-gray-700 text-lg">
+                  {oneproduct.moq} Piece (MOQ)
+                </p>
 
                 {/* Quantity & Price Section */}
                 <div className="flex items-center my-5 gap-4">
@@ -158,32 +166,50 @@ const ProductPage = () => {
                 <table className="w-full text-lg text-left text-gray-700">
                   <tbody>
                     <tr className="border-b">
-                      <td className="py-3 font-semibold text-lg text-gray-800">Business Type :</td>
-                      <td>	Manufacturer, Exporter, Supplier, Retailer, Trader</td>
+                      <td className="py-3 font-semibold text-lg text-gray-800">
+                        Business Type :
+                      </td>
+                      <td>
+                        {" "}
+                        Manufacturer, Exporter, Supplier, Retailer, Trader
+                      </td>
                     </tr>
                     <tr className="border-b">
-                      <td className="py-3 font-semibold text-lg text-gray-800">Size :</td>
-                      <td className="flex items-center gap-4 py-4">{oneproduct.size.map((item) => (
-                        <p className="border px-2 py-1">{item}</p>
-                      ))}</td>
+                      <td className="py-3 font-semibold text-lg text-gray-800">
+                        Size :
+                      </td>
+                      <td className="flex items-center gap-4 py-4">
+                        {oneproduct.size.map((item) => (
+                          <p className="border px-2 py-1">{item}</p>
+                        ))}
+                      </td>
                     </tr>
                     <tr className="border-b">
-                      <td className="py-3 font-semibold text-lg text-gray-800">Type :</td>
+                      <td className="py-3 font-semibold text-lg text-gray-800">
+                        Type :
+                      </td>
                       <td>{oneproduct.fabricType}</td>
                     </tr>
                     <tr className="border-b">
-                      <td className="py-3 font-semibold text-lg text-gray-800">Material :</td>
+                      <td className="py-3 font-semibold text-lg text-gray-800">
+                        Material :
+                      </td>
                       <td>{oneproduct.material}</td>
                     </tr>
                     <tr className="border-b">
-                      <td className="py-3 font-semibold text-lg text-gray-800">Preferred Buyer From :</td>
+                      <td className="py-3 font-semibold text-lg text-gray-800">
+                        Preferred Buyer From :
+                      </td>
                       <td>All Over World</td>
                     </tr>
                   </tbody>
                 </table>
 
                 {/* More Details Link */}
-                <Link to={"/"} className="text-blue-500 text-lg font-medium hover:text-blue-700 transition-all">
+                <Link
+                  to={"/"}
+                  className="text-blue-500 text-lg font-medium hover:text-blue-700 transition-all"
+                >
                   Click to view more Details
                 </Link>
 
@@ -198,7 +224,6 @@ const ProductPage = () => {
                 </div>
               </div>
             </div>
-
           </div>
 
           {/* Zoomed Image */}
@@ -220,9 +245,8 @@ const ProductPage = () => {
         </div>
       </div>
 
-      <div className="w-full bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-4" >
+      <div className="w-full bg-gradient-to-br from-blue-50 to-blue-100 py-12 px-4">
         <div className="w-full max-w-7xl mx-auto bg-white shadow-xl rounded-xl p-8 border border-gray-200">
-
           {/* Header Section */}
           <h2 className="text-4xl font-bold text-blue-900 text-center mb-6">
             Product Details
@@ -233,42 +257,68 @@ const ProductPage = () => {
             <table className="w-full text-lg border-collapse">
               <tbody>
                 <tr className="border-b border-blue-200 bg-gray-50">
-                  <td className="px-6 py-3 font-medium text-gray-800">Application</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.application}</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Application
+                  </td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.application}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-gray-50">
                   <td className="px-6 py-3 font-medium text-gray-800">Color</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.colors}</td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.colors}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-gray-50">
-                  <td className="px-6 py-3 font-medium text-gray-800">Gender</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.gender}</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Gender
+                  </td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.gender}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-white">
-                  <td className="px-6 py-3 font-medium text-gray-800">Season</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.season}</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Season
+                  </td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.season}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-gray-50">
-                  <td className="px-6 py-3 font-medium text-gray-800">Features</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.feature}</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Features
+                  </td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.feature}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-gray-50">
-                  <td className="px-6 py-3 font-medium text-gray-800">Pattern</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.pattern}</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Pattern
+                  </td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.pattern}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-white">
-                  <td className="px-6 py-3 font-medium text-gray-800">Occasion</td>
-                  <td className="px-6 py-3 text-gray-700">{oneproduct.occasion}</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Occasion
+                  </td>
+                  <td className="px-6 py-3 text-gray-700">
+                    {oneproduct.occasion}
+                  </td>
                 </tr>
                 <tr className="border-b border-blue-200 bg-white">
-                  <td className="px-6 py-3 font-medium text-gray-800">Country of Origin</td>
+                  <td className="px-6 py-3 font-medium text-gray-800">
+                    Country of Origin
+                  </td>
                   <td className="px-6 py-3 text-gray-700">India</td>
                 </tr>
               </tbody>
             </table>
           </div>
-
-
 
           {/* Call-to-Action Button */}
           <div className="mt-4 flex justify-center">
@@ -280,7 +330,6 @@ const ProductPage = () => {
       </div>
 
       <TopProducts />
-
     </>
   );
 };

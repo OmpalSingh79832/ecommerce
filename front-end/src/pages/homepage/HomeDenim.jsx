@@ -19,6 +19,7 @@ import TopProducts from './TopProducts';
 const HomeDenim = () => {
 
   const { topproducts, popuarproducts } = useSelector((state) => state.product)
+  console.log(topproducts, 'topproducts')
   const dispatch = useDispatch();
 
   useEffect(() => {

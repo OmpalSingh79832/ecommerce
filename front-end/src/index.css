@@ -10,6 +10,7 @@ body {
 }
 html {
   overflow-x: hidden;
+  scroll-behavior: smooth;
 }
 
 .sec-title h4:before {
