@@ -5,7 +5,7 @@ import {getTopProducts } from '../../redux/slices/productReduer';
 import Slider from "react-slick";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
 
-const TopProducts = () => {
+const PopularProducts = () => {
     const { popuarproducts } = useSelector((state) => state.product)
     const dispatch = useDispatch();
 
@@ -25,6 +25,7 @@ const TopProducts = () => {
         autoplaySpeed: 3000, // Adjust speed (3 seconds)
         slidesToShow: 4,
         slidesToScroll: 1,
+        arrows: false,
         responsive: [
             {
                 breakpoint: 1024,
@@ -73,7 +74,7 @@ const TopProducts = () => {
 
                 <div className="mx-auto sm:py-10">
                     <Slider ref={sliderRef} {...sliderSettings}>
-                        {popular.slice(0, 8).map((item) => (
+                        {popular.slice(0, 20).map((item) => (
                             <Link key={item._id} to={`/product-details/${item._id}`} className="group px-2">
                                 <img
                                     src={item?.images[0]}
@@ -93,4 +94,4 @@ const TopProducts = () => {
     )
 }
 
-export default TopProducts;
+export default PopularProducts;

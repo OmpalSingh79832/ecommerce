@@ -9,7 +9,7 @@ import {
 } from "react-icons/fa";
 import { MdCloudUpload } from "react-icons/md";
 
-const Sidebar = ({ setActivePage, userRole, isOpen, toggleSidebar }) => {
+const Sidebar = ({ setActivePage, isOpen, toggleSidebar }) => {
   return (
     <div className="relative h-full">
       {/* Sidebar */}
@@ -38,17 +38,40 @@ const Sidebar = ({ setActivePage, userRole, isOpen, toggleSidebar }) => {
               Add Product
             </button>
           </li>
-          
           <li>
             <button
               className="w-full text-left flex items-center p-2 hover:bg-gray-200 text-white hover:text-black rounded"
               onClick={() => {
                 setActivePage("allproduct");
-                toggleSidebar(); 
+                toggleSidebar();
               }}
             >
               <FaProjectDiagram className="mr-2" />
-              All Product
+              Catalogue Product
+            </button>
+          </li>
+          <li>
+            <button
+              className="w-full text-left flex items-center p-2 hover:bg-gray-200 text-white hover:text-black rounded"
+              onClick={() => {
+                setActivePage("popularproduct");
+                toggleSidebar();
+              }}
+            >
+              <FaProjectDiagram className="mr-2" />
+              Popular Product
+            </button>
+          </li>
+          <li>
+            <button
+              className="w-full text-left flex items-center p-2 hover:bg-gray-200 text-white hover:text-black rounded"
+              onClick={() => {
+                setActivePage("topproduct");
+                toggleSidebar();
+              }}
+            >
+              <FaProjectDiagram className="mr-2" />
+              Top Product
             </button>
           </li>
           <li>

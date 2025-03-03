@@ -17,13 +17,13 @@ const Filters = () => {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedColors, setSelectedColors] = useState([]);
 
-  // const categories = useMemo(() => {
-  //   return Array.from(new Set(productsFromApi.map((product) => product.category)));
-  // }, [productsFromApi]);
+  const categories = useMemo(() => {
+    return Array.from(new Set(productsFromApi.map((product) => product.category)));
+  }, [productsFromApi]);
 
-  // const colors = useMemo(() => {
-  //   return Array.from(new Set(productsFromApi.map((product) => product.colors)));
-  // }, [productsFromApi]);
+  const colors = useMemo(() => {
+    return Array.from(new Set(productsFromApi.map((product) => product.colors)));
+  }, [productsFromApi]);
 
   const toggleSelection = (setSelected, value, selectedArray) => {
     setSelected(
@@ -64,7 +64,7 @@ const Filters = () => {
             Select Category
           </h2>
           {/* Category Filter */}
-          {/* <div className="border p-3 mb-2 cursor-pointer">
+          <div className="border p-3 mb-2 cursor-pointer">
             <div
               className="flex justify-between items-center"
               onClick={() => setIsCategoryOpen(!isCategoryOpen)}
@@ -88,7 +88,7 @@ const Filters = () => {
                 ))}
               </div>
             )}
-          </div> */}
+          </div>
           {/* Colors Filter */}
           <div className="border p-3 mb-2 cursor-pointer">
             <div
@@ -98,7 +98,7 @@ const Filters = () => {
               <span>Colors</span>
               {isColorOpen ? <FaMinus /> : <FaPlus />}
             </div>
-            {/* {isColorOpen && (
+            {isColorOpen && (
               <div className="mt-2 gap-2">
                 {colors.map((color) => (
                   <label key={color} className="flex items-center gap-2">
@@ -117,7 +117,7 @@ const Filters = () => {
                   </label>
                 ))}
               </div>
-            )} */}
+            )}
           </div>
         </div>
       </div>

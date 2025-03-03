@@ -4,7 +4,8 @@ import { products } from "./data";
 import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 import { useDispatch, useSelector } from "react-redux";
 import { getProductById } from "../../redux/slices/productReduer";
-import TopProducts from "../../pages/homepage/TopProducts";
+
+import PopularProducts from "../../pages/homepage/PopularProducts";
 
 const ProductPage = () => {
   const { singleproduct } = useSelector((state) => state.product);
@@ -329,7 +330,7 @@ const ProductPage = () => {
         </div>
       </div>
 
-      <TopProducts />
+      <PopularProducts />
     </>
   );
 };

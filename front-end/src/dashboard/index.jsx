@@ -9,6 +9,9 @@ import { FaBars, FaTimes } from "react-icons/fa";
 
 import AllProducts from "./components/AllProducts";
 import { ToastContainer } from "react-toastify";
+import PopularP from "./components/PopularP";
+import TopProducts from "./components/TopProducts";
+// import TopProduct from "./components/TopProduct";
 
 const Index = () => {
   const [activePage, setActivePage] = useState("addproduct");
@@ -48,6 +51,10 @@ const Index = () => {
         return <Dashboard />;
       case "allproduct":
         return <AllProducts />;
+        case "popularproduct":
+          return <PopularP />;
+          case "topproduct":
+            return <TopProducts />;
       case "profile":
         return <Profile />;
 

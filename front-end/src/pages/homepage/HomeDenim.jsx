@@ -12,14 +12,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { getPopularProducts, getTopProducts } from '../../redux/slices/productReduer';
 import Slider from "react-slick";
 import { FaCircleChevronLeft, FaCircleChevronRight } from "react-icons/fa6";
-import TopProducts from './TopProducts';
+import PopularProducts from './PopularProducts';
+
 
 
 
 const HomeDenim = () => {
 
   const { topproducts, popuarproducts } = useSelector((state) => state.product)
-  console.log(topproducts, 'topproducts')
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -107,7 +107,7 @@ const HomeDenim = () => {
 
         <div className="md:py-4 sm:py-10">
           <Slider ref={sliderRef} {...sliderSettings}>
-            {top.slice(0, 8).map((item, index) => (
+            {top.slice(0, 20).map((item, index) => (
               <div key={index} className="px-2">
                 <Link to={`/product-details/${item._id}`} className="group">
                   <img
@@ -236,7 +236,7 @@ const HomeDenim = () => {
       </div >
 
       {/* Our Top Products */}
-      <TopProducts />
+      <PopularProducts />
 
 
       {/* Testomonials Section */}

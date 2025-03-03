@@ -164,8 +164,8 @@ export default function UploadProduct() {
           {/* Text Inputs */}
           {["colors", "pattern", "occasion"].map((field) => (
             <div key={field} className="flex flex-col">
-              <label className="text-base font-medium text-gray-700">{field}</label>
-              <input type="text" name={field} value={formData[field]} onChange={handleChange} placeholder={`Enter ${field}`} required className="p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" />
+              <label className="text-base font-medium text-gray-700 capitalize">{field}</label>
+              <input type="text" name={field} value={formData[field]} onChange={handleChange} placeholder={`Enter ${field}`} required className=" placeholder:capitalize p-3 border rounded-lg focus:ring-2 focus:ring-blue-300" />
             </div>
           ))}
           {/*  */}
